@@ -1,11 +1,15 @@
 <article>
-    <section class="header">
-        Posted on $date$
-        $if(author)$
-            by $author$
-        $endif$
-    </section>
-    <section>
-        $body$
-    </section>
+  <section class="title">
+    $title$
+  </section>
+  <section class="header">
+    $if(edited)$
+      Originally posted on $date$; latest edit on $edited$
+    $else$
+      Posted on $date$
+    $endif$
+  </section>
+  <section>
+    $body$
+  </section>
 </article>
