@@ -46,10 +46,11 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
+            posts <- take 5 <$> (recentFirst =<< loadAll "posts/*")
+            let indexCtx = case length posts of
+                             0 -> defaultContext
+                             _ -> listField "posts" postCtx (return posts) `mappend`
+                                defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
