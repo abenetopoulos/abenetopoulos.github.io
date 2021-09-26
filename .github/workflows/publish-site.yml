@@ -31,9 +31,9 @@ jobs:
           path: |
             ~/.cabal/store
             dist-newstyle
-          key: ${{ runner.os }}-${{ env.ghc }}-${{ hashFiles('cabal.project.freeze') }}
+          key: ${{ runner.os }}-${{ env.GHC_VERSION }}-${{ hashFiles('cabal.project.freeze') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.ghc }}-
+            ${{ runner.os }}-${{ env.GHC_VERSION }}-
 
       - name: Run site build
         run: cabal new-run site build
