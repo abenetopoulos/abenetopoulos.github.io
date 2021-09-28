@@ -23,17 +23,17 @@ jobs:
 
       - run: cabal new-update
       - run: cabal new-build --only-dependencies
-      - run: cabal new-freeze
+        # - run: cabal new-freeze
 
-      - name: Cache cabal deps
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cabal/store
-            dist-newstyle
-          key: ${{ runner.os }}-${{ env.GHC_VERSION }}-${{ hashFiles('cabal.project.freeze') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.GHC_VERSION }}-
+        # - name: Cache cabal deps
+        #   uses: actions/cache@v2
+        #   with:
+        #     path: |
+        #       ~/.cabal/store
+        #       dist-newstyle
+        #     key: ${{ runner.os }}-${{ env.GHC_VERSION }}-${{ hashFiles('cabal.project.freeze') }}
+        #     restore-keys: |
+        #       ${{ runner.os }}-${{ env.GHC_VERSION }}-
 
       - name: Run site build
         run: cabal new-run site build
