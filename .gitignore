@@ -3,3 +3,4 @@ _site/
 dist-newstyle/
 .stack-work/
 posts/test-post.*
+posts/draft-*
