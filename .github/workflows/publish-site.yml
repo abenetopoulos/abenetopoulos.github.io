@@ -15,13 +15,13 @@ jobs:
       - name: Checkout target branch
         uses: actions/checkout@v2.3.4
       - name: Setup environment
-        uses: haskell/actions/setup@v1
+        uses: haskell-actions/setup@v2.11.0
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: ${{ env.CABAL_VERSION }}
 
 
-      - run: cabal new-update
+          # - run: cabal new-update
       - run: cabal new-build --only-dependencies
         # - run: cabal new-freeze
 
@@ -39,7 +39,7 @@ jobs:
         run: cabal new-run site build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: JamesIves/github-pages-deploy-action@4.8.0
         with:
           branch: gh-pages
           folder: _site
